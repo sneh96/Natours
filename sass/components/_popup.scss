@@ -1,5 +1,5 @@
-.popup{
-  background-color: rgba($color: $color-black, $alpha: .8);
+.popup {
+  background-color: rgba($color: $color-black, $alpha: 0.8);
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -8,40 +8,65 @@
   z-index: 5000;
   opacity: 0;
   visibility: hidden;
-  transition: all .3s;
+  transition: all 0.3s;
 
-  &__content{
+  &__content {
     @include absoluteCenter;
     width: 75%;
     background-color: $color-white;
-    box-shadow: 0 2rem 4rem rgba($color: $color-black, $alpha: .2);
+    box-shadow: 0 2rem 4rem rgba($color: $color-black, $alpha: 0.2);
     border-radius: 3px;
     display: table;
     overflow: hidden;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25);
-    transition: all .6s .2s;
+    transition: all 0.6s 0.2s;
+
+    @include respond(tab-land) {
+      width: 80%;
+      display: block;
+    }
   }
 
-  &__left{
+  &__left {
     width: 33.33333%;
     display: table-cell;
     vertical-align: middle;
+
+    @include respond(tab-land) {
+      width: 100%;
+      display: inline-block;
+    }
   }
 
-  &__right{
+  &__right {
     width: 66.666667%;
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem;
+
+    @include respond(tab-land) {
+      width: 100%;
+      display: inline-block;
+    }
   }
 
-  &__img{
+  &__img {
     display: block;
     width: 100%;
+
+    @include respond(tab-land) {
+      width: 50%;
+      height: 30rem;
+      float: left;
+    } 
+    
+    @include respond(phone) {
+      height: 22rem;
+    } 
   }
 
-  &__text{
+  &__text {
     font-size: 1.4rem;
     margin-bottom: 4rem;
     -moz-column-count: 2;
@@ -55,20 +80,19 @@
     hyphens: auto;
   }
 
-  &:target{
+  &:target {
     visibility: visible;
     opacity: 1;
   }
 
-  &:target &__content{
+  &:target &__content {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
 
-  &__close{
-
+  &__close {
     &:link,
-    &:visited{
+    &:visited {
       color: $color-grey-dark;
       position: absolute;
       top: 2.5rem;
@@ -76,11 +100,11 @@
       font-size: 3rem;
       text-decoration: none;
       display: inline-block;
-      transition: all .2s;
+      transition: all 0.2s;
       line-height: 1;
     }
 
-    &:hover{
+    &:hover {
       color: $color-primary;
     }
   }
